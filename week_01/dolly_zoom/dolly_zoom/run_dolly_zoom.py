@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import project_objects, compute_focal_length, compute_f_pos
 
 # load points.mat file
-mat_file_path = '/Users/vincent/Documents/main/learn/robotics/robotics-perception/week_01/Week1 Assignment/RoboticsPerceptionWeek1AssignmentCodeFrame/points.mat'
+mat_file_path = '/Users/vincent/Documents/main/learn/robotics/robotics-perception/week_01/dolly_zoom/dolly_zoom/points.mat'
 mat_contents = scipy.io.loadmat(mat_file_path)
 points = {key: mat_contents[key] for key in mat_contents.keys() if not key.startswith('__')}
  # %%

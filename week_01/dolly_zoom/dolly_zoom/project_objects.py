@@ -11,7 +11,6 @@
 # after running Dolly_Zoom
 
 import numpy as np
-import matplotlib 
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 from matplotlib.animation import FuncAnimation, PillowWriter
@@ -58,7 +57,7 @@ def project_objects(f, pos, points, fid):
     
     ani = FuncAnimation(fig, update, len(f), init, blit=True, repeat=False, interval=20)
     writer = PillowWriter(fps=30)
-    ani.save('/Users/vincent/Documents/main/learn/robotics/robotics-perception/week_01/Week1 Assignment/RoboticsPerceptionWeek1AssignmentCodeFrame/output/dolly_zoom_animation.gif', writer=writer)    
+    ani.save('/Users/vincent/Documents/main/learn/robotics/robotics-perception/week_01/dolly_zoom/dolly_zoom/output/dolly_zoom_animation.gif', writer=writer)    
     plt.show()
 
 def project_objects_image(f, pos, points, fid):
@@ -87,7 +86,7 @@ def project_objects_image(f, pos, points, fid):
     ax.add_patch(Polygon(p2d[[0, 1, 2]], closed=True, edgecolor='black'))
     ax.add_patch(Polygon(p2d[[1, 2, 3]], closed=True, edgecolor='black'))
 
-    fig.savefig('/Users/vincent/Documents/main/learn/robotics/robotics-perception/week_01/Week1 Assignment/RoboticsPerceptionWeek1AssignmentCodeFrame/output/dolly_zoom_image.png')    
+    fig.savefig('/Users/vincent/Documents/main/learn/robotics/robotics-perception/week_01/dolly_zoom/dolly_zoom/output/dolly_zoom_image.png')    
     plt.show()
 
 def project(p3d, f, pos):
@@ -103,6 +102,7 @@ def project(p3d, f, pos):
     Returns:
     - p2d: n by 2 numpy array, each row represents vertex image position, in pixel unit
     """
+    # (960, 540) is the image 2d coordination offset.
     p2d = np.zeros((p3d.shape[0], 2))
     p2d[:, 0] = p3d[:, 0] * f / (p3d[:, 2] - pos) + 960
     p2d[:, 1] = p3d[:, 1] * f / (p3d[:, 2] - pos) + 540
